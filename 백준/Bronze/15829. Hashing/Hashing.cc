@@ -8,12 +8,14 @@ int main(void){
     scanf("%d",&l);
     scanf("%s",alp);
 
-    int sum=0;
+    long long sum=0;
+    long long r=1;
+    long long n=1234567891;
     for(int i=0; i<l; i++){
-        int hash=alp[i]-96;
-        sum+=(hash)*pow(31,i);
+        sum=(sum+(alp[i]-96)*r)%n;
+        r=(r*31)%n;
     }
 
-    printf("%d",sum);
+    printf("%lld",sum);
     return 0;
 }
