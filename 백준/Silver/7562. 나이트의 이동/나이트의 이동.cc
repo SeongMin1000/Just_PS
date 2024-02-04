@@ -3,7 +3,6 @@
 #include <cstring>
 using namespace std;
 
-//int arr[300][300]={0};
 int vis[300][300]={0};
 int dx[8]={-2,-1,1,2,2,1,-1,-2};
 int dy[8]={1,2,2,1,-1,-2,-2,-1};
@@ -17,7 +16,7 @@ int main() {
         int n; cin>>n;
         int a,b; cin>>a>>b;
         int x,y; cin>>x>>y;
-        //memset(arr,0,sizeof(arr));
+
         memset(vis,0,sizeof(vis));
         vis[a][b]=1;
         queue<pair<int,int>> q;
