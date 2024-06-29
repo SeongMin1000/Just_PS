@@ -1,37 +1,30 @@
-#include <iostream>
-#define MAX 10001
-
+#include <bits/stdc++.h>
 using namespace std;
-int arrApartment[MAX] = {}; // 0으로 초기화
 
-int main() {
-    // 입력 받기
-    int N, M; // N : 아파트 층 수 , M : 참가자 수
-    cin >> N >> M;
-    for (int i = 1; i <= M; i++) {
-        int hand1, hand2;
-        cin >> hand1 >> hand2;
-        arrApartment[hand1] = i;
-        arrApartment[hand2] = i;
+int arr[10003]={};
+
+int main(){
+    int n,m;
+    cin>>n>>m;
+
+    for(int i=1; i<=m; i++){
+        int a,b;
+        cin>>a>>b;
+        arr[a]=i;
+        arr[b]=i;
     }
 
-    // 아파트 층 수가 참가자 수 2배를 넘길 경우 ? 아파트 층 수는 2*M으로 나눈 나머지이다.
-    // 만약 나머지가 0이라면 아파트 층 수는 2*M이다.
-    N %= (2*M);
-    if (N == 0) N = 2*M;
+    int h=(n%(2*m)==0) ? 2*m : n%(2*m);
 
-    // 구현
-    int floor = 1;
-    for (int i = 1; i < MAX; i++) {
-        if (arrApartment[i] != 0) {
-            if (floor == N) {
-                cout << arrApartment[i];
+    int f=1;
+    for(int i=1; i<10003;i++){
+        if(arr[i]!=0){
+            if(f==h){
+                cout<<arr[i];
                 break;
-            } else {
-                floor += 1;
             }
+            else f++;
         }
     }
-
     return 0;
 }
