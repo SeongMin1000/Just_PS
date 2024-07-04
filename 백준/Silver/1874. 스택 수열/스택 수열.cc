@@ -1,42 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <bits/stdc++.h>
+using namespace std;
 
-char pm[200000];
-int stack[200000];
+stack<int> s;
+string ans;
 
-int main(void){
-    int n;
-    scanf("%d",&n);
+int main(void) {
+    ios_base::sync_with_stdio(false);
+	cin.tie(0); cout.tie(0);
 
-    int *num=(int *)malloc(sizeof(int)*n);
-    for(int i=0; i<n; i++){
-        scanf("%d",&num[i]);
-    }
+    int k;
+    cin>>k;
+    int m=1;
+    for(int i=0; i<k; i++){
+        int n;
+        cin>>n;
 
-    int top=-1;
-    int push=1;
-    int count=0;
-    int idx=0;
-    while(1){
-        if(top==-1 || stack[top]<num[count]){
-            stack[++top]=push++;
-            pm[idx++]='+';
+        while(m<=n){
+            s.push(m++);
+            ans+='+';
         }
-        else if(stack[top]==num[count]){
-            top--;
-            count++;
-            pm[idx++]='-';
+        if(n==s.top()){
+            s.pop();
+            ans+='-';
         }
         else{
-            printf("NO\n");
+            cout<<"NO";
             return 0;
         }
-        if(count==n) break;
     }
-    for(int j=0; j<idx; j++){
-        printf("%c\n",pm[j]);
-    }
-   
-    free(num);
+    for(auto i : ans) cout<<i<<"\n";
     return 0;
 }
