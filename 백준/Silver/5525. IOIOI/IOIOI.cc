@@ -11,23 +11,30 @@ int main()
     string s;
     cin >> n >> m >> s;
 
-    string pn;
-    for (int i = 0; i < n; i++)
+    int ans = 0;
+    int chk = 0;
+    for (int i = 0; i < m; i++)
     {
-        pn += "IO";
+
+        if (s[i] == 'O')
+            continue;
+
+        else
+        {
+
+            while (s[i + 1] == 'O' && s[i + 2] == 'I')
+            {
+                chk++;
+                if (chk == n)
+                {
+                    ans++;
+                    chk--;
+                }
+                i += 2;
+            }
+            chk = 0;
+        }
     }
-    pn += "I";
-
-    int count = 0;
-    auto pos = s.find(pn);
-
-    while (pos != string::npos)
-    {
-        count++;
-        pos = s.find(pn, pos + 1);
-    }
-
-    cout << count;
-
+    cout << ans;
     return 0;
 }
