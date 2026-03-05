@@ -1,32 +1,35 @@
-#include <iostream>
-#include <algorithm>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-int arr[100001];
+int arr[200002];
+int pos[2000002];
 
-int main() {
+int main()
+{
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-	ios::sync_with_stdio(false);
 
-    int n,x;
-    cin>>n;
-    for(int i=0; i<n; i++){
-        cin>>arr[i];
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
+    {
+        int a;
+        cin >> a;
+        pos[a]++;
+        arr[i] = a;
     }
-    cin>>x;
-    sort(arr,arr+n);
+    int x;
+    cin >> x;
 
-    int left=0,right=n-1,count=0;
-    while(left<right){
-        if(arr[left]+arr[right]==x){
-            left++;
-            right--;
-            count++;
-        }
-        else if(arr[left]+arr[right]>x) right--;
-        else left++;
-
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (x - arr[i] > 0 && pos[x - arr[i]])
+            ans++;
     }
-    cout<<count;
+    cout << ans / 2;
+
     return 0;
 }
