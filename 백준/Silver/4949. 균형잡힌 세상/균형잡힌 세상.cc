@@ -1,32 +1,60 @@
-#include <stdio.h>
-#include <string.h>
+#include <bits/stdc++.h>
 
-int main(void){
-    char arr[101];
-    char arr2[101];
-    while(1){
-        fgets(arr,102,stdin);
-        if(arr[0]=='.') break;
-        int n=0;
-        for(int i=0; arr[i]!='.'; i++){
-            if(arr[i]=='(' || arr[i]=='[') arr2[n++]=arr[i];
-            else if(arr[i]==')'){
-                if(arr2[n-1]=='(' && n>0) n--;
-                else{
-                    n=-1;
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    while (1)
+    {
+        string s;
+        getline(cin, s);
+
+        if (s == ".")
+            break;
+
+        stack<int> st;
+        bool ans = 1;
+        for (auto a : s)
+        {
+            if (a == '(' || a == '[')
+                st.push(a);
+
+            else if (a == ']')
+            {
+                if (st.empty() || st.top() != '[')
+                {
+                    ans = 0;
                     break;
                 }
+                else
+                {
+                    st.pop();
+                }
             }
-            else if(arr[i]==']'){
-                if(arr2[n-1]=='[' && n>0) n--;
-                else{
-                    n=-1;
+            else if (a == ')')
+            {
+                if (st.empty() || st.top() != '(')
+                {
+                    ans = 0;
                     break;
+                }
+                else
+                {
+                    st.pop();
                 }
             }
         }
-        if(n==0) printf("yes\n");
-        else printf("no\n");
+
+        if (!st.empty())
+            ans = 0;
+        if (ans)
+            cout << "yes\n";
+        else
+            cout << "no\n";
     }
+
     return 0;
 }
