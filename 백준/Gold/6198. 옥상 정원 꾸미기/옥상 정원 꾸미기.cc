@@ -1,41 +1,31 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-stack<int> tower;
-long long ans = 0;
+using namespace std;
 
 int main()
 {
     ios_base::sync_with_stdio(false);
-    cin.tie(0);
+    cin.tie(NULL);
 
     int n;
     cin >> n;
+
+    stack<int> s;
+    long long ans = 0;
 
     for (int i = 0; i < n; i++)
     {
         int h;
         cin >> h;
-
-        if (tower.empty())
+        while (!s.empty() && s.top() <= h)
         {
-            tower.push(h);
-            continue;
+            s.pop();
         }
-
-        while (!tower.empty())
-        {
-            if (tower.top() > h)
-            {
-                break;
-            }
-            tower.pop();
-        }
-
-        ans += tower.size();
-
-        tower.push(h);
+        ans += s.size();
+        s.push(h);
     }
+
     cout << ans;
+
     return 0;
 }
