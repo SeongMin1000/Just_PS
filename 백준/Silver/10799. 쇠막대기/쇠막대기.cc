@@ -1,24 +1,32 @@
-#include <iostream>
-#include <string>
-#include <stack>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-int main(){
-    string str;
-    stack<char> pipe;
-    int ans=0;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    cin>>str;
+    string s;
+    cin >> s;
 
-    for(int i=0; i<str.length(); i++){
-        if(str[i]=='(') pipe.push(str[i]);
-        else{
-            pipe.pop();
-            if(str[i-1]=='(') ans+=pipe.size();
-            else ans++; 
+    stack<char> st;
+    int ans = 0;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == '(')
+            st.push(s[i]);
+        else
+        {
+            st.pop();
+            if (s[i - 1] == '(')
+            {
+                ans += st.size();
+            }
+            else
+                ans += 1;
         }
     }
-
-    cout<<ans;
+    cout << ans;
     return 0;
 }
