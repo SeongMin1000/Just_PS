@@ -1,57 +1,63 @@
-#include <iostream>
-#include <stack>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-int main() {
+int main()
+{
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-	ios::sync_with_stdio(false);
 
     string s;
-    cin>>s;
-    int tmp=1,ans=0;
-    stack<char> t;
+    cin >> s;
 
-    for(int i=0; i<s.size(); i++){
-        if(s[i]=='('){
-            t.push(s[i]);
-            tmp*=2;
+    int ans = 0;
+    int temp = 1;
+    stack<char> st;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == '(')
+        {
+            st.push(s[i]);
+            temp *= 2;
         }
-        else if(s[i]=='['){
-            t.push(s[i]);
-            tmp*=3;
+        else if (s[i] == '[')
+        {
+            st.push(s[i]);
+            temp *= 3;
         }
-        else if(s[i]==')'){
-            if(t.empty() || t.top()!='('){
-                ans=0;
-                break;
+        else if (s[i] == ')')
+        {
+            if (st.empty() || st.top() != '(')
+            {
+                cout << 0;
+                return 0;
             }
-            if(s[i-1]=='('){
-                ans+=tmp;
-                tmp/=2;
-                t.pop();
+            if (s[i - 1] == '(')
+            {
+                ans += temp;
             }
-            else{
-                tmp/=2;
-                t.pop();
-            }
+            temp /= 2;
+            st.pop();
         }
-        else if(s[i]==']'){
-            if(t.empty() || t.top()!='['){
-                ans=0;
-                break;
+        else if (s[i] == ']')
+        {
+            if (st.empty() || st.top() != '[')
+            {
+                cout << 0;
+                return 0;
             }
-            if(s[i-1]=='['){
-                ans+=tmp;
-                tmp/=3;
-                t.pop();
+
+            if (s[i - 1] == '[')
+            {
+                ans += temp;
             }
-            else{
-                tmp/=3;
-                t.pop();
-            }
+            temp /= 3;
+            st.pop();
         }
     }
-    if(!t.empty()) ans=0;
-    cout<<ans;
+    if (!st.empty())
+        cout << 0;
+    else
+        cout << ans;
     return 0;
 }
