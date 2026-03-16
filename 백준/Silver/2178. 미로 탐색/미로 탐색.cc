@@ -1,41 +1,51 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-string board[102];
+string arr[102];
 int dis[102][102];
-int dx[4]={1,0,-1,0};
-int dy[4]={0,1,0,-1};
+int dx[4] = {1, 0, -1, 0};
+int dy[4] = {0, -1, 0, 1};
 
-int main() {
+int main()
+{
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-	ios::sync_with_stdio(false);
 
-    int n,m;
-    cin>>n>>m;
-    for(int i=0; i<n; i++){
-        cin>>board[i];
-    }
+    int n, m;
+    cin >> n >> m;
 
-    for(int i=0; i<n; i++){
-        fill(dis[i],dis[i]+m,-1);
-    }
-    
-    queue<pair<int,int>> q;
-    q.push({0,0});
-    dis[0][0]=0;
-    while(!q.empty()){
-        pair<int,int> cur = q.front();
-        q.pop();
-        for(int dir=0; dir<4; dir++){
-            int x=cur.first+dx[dir];
-            int y=cur.second+dy[dir];
-            if(x<0 || x>=n || y<0 || y>=m) continue;
-            if(dis[x][y]>=0 || board[x][y]!='1') continue;
-            dis[x][y]=dis[cur.first][cur.second]+1;
-            q.push({x,y});
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+
+        for (int j = 0; j < m; j++)
+        {
+            dis[i][j] = -1;
         }
     }
-    cout<<dis[n-1][m-1]+1;
+
+    queue<pair<int, int>> q;
+    q.push({0, 0});
+    dis[0][0] = 0;
+    while (!q.empty())
+    {
+        auto cur = q.front();
+        q.pop();
+        for (int i = 0; i < 4; i++)
+        {
+            int curx = cur.second + dx[i];
+            int cury = cur.first + dy[i];
+
+            if (curx < 0 || cury < 0 || curx >= m || cury >= n)
+                continue;
+            if (arr[cury][curx] != '1' || dis[cury][curx] >= 0)
+                continue;
+            dis[cury][curx] = dis[cur.first][cur.second] + 1;
+            q.push({cury, curx});
+        }
+    }
+
+    cout << dis[n - 1][m - 1] + 1;
     return 0;
 }
