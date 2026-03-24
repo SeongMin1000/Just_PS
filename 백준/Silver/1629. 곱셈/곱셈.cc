@@ -1,24 +1,30 @@
-#include <stdio.h>
+#include <bits/stdc++.h>
 
-int divide(int a, int b, int c){
-    if(b>1){
-        long long result=divide(a,b/2,c);
-        if(b%2==0){
-            return (result*result)%c;
-        }
-        else{
-            return ((result*result)%c*a)%c;
-        }
-    }
-    else return a;
+using namespace std;
+
+long long pow(long long a, long long b, long long m)
+{
+    if (b == 1)
+        return a % m;
+
+    long long val;
+    val = pow(a, b / 2, m);
+    val = val * val % m;
+
+    if (b % 2 == 0)
+        return val;
+    else
+        return val * a % m;
 }
 
-int main(){
-    int a,b,c;
-    scanf("%d %d %d",&a,&b,&c);
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    int ans=divide(a%c,b,c);
+    int a, b, c;
+    cin >> a >> b >> c;
 
-    printf("%d",ans);
+    cout << pow(a, b, c);
     return 0;
 }
