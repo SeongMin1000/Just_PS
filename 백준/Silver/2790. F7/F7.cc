@@ -25,7 +25,10 @@ int main()
         {
             ans++;
         }
-        tmp = max(tmp, arr[i] + i + 1);
+        if (arr[i - 1] == arr[i])
+        {
+            tmp = max(tmp, arr[i] + i + 1);
+        }
     }
     cout << ans;
     return 0;
