@@ -17,6 +17,7 @@
 | [0027-remove-element](https://github.com/SeongMin1000/Just_PS/tree/master/0027-remove-element) |
 | [0088-merge-sorted-array](https://github.com/SeongMin1000/Just_PS/tree/master/0088-merge-sorted-array) |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/SeongMin1000/Just_PS/tree/master/0121-best-time-to-buy-and-sell-stock) |
+| [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/SeongMin1000/Just_PS/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 | [0169-majority-element](https://github.com/SeongMin1000/Just_PS/tree/master/0169-majority-element) |
 | [0189-rotate-array](https://github.com/SeongMin1000/Just_PS/tree/master/0189-rotate-array) |
 ## Two Pointers
@@ -51,4 +52,9 @@
 |  |
 | ------- |
 | [0121-best-time-to-buy-and-sell-stock](https://github.com/SeongMin1000/Just_PS/tree/master/0121-best-time-to-buy-and-sell-stock) |
+| [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/SeongMin1000/Just_PS/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
+## Greedy
+|  |
+| ------- |
+| [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/SeongMin1000/Just_PS/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 <!---LeetCode Topics End-->
